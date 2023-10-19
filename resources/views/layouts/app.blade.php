@@ -35,6 +35,12 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                    
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">{{ $properties['native'] }}</a>
+                    </li>
+                    @endforeach
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
